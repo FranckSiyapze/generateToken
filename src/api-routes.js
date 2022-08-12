@@ -9,6 +9,12 @@ router.get('/', function (req, res) {
         message: 'Welcome to RESTHub crafted with love!'
     });
 });
+const nocache = (req,resp,next)=>{
+    resp.header('Cache-Control','private,no-cache,no-store,must-revalidate');
+    resp.header('Expires','-1');
+    resp.header('Pragma','no-cache');
+    next();
+}
 
 router.get('/test', function (req, res) {
     res.json({
@@ -16,8 +22,9 @@ router.get('/test', function (req, res) {
         message: 'Welcome !'
     });
 });
-router.post('/generateToken', function (req, res) {
+router.post('/generateToken',nocache, function (req, res) {
     ///console.log(req.body);
+    res.header('Acess-Control-Allow-Origin','*');
     const appID = "2ebd5aad591a42bc85aaae36dc754618";
     const appCertificate = "abc7fdb9e6b94a78a1e4a36000c3631a";
     const expirationTimeInSeconds = 3600;
