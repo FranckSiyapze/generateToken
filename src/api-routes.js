@@ -25,8 +25,10 @@ router.get('/test', function (req, res) {
 router.post('/generateToken',nocache, function (req, res) {
     ///console.log(req.body);
     res.header('Acess-Control-Allow-Origin','*');
-    const appID = "2ebd5aad591a42bc85aaae36dc754618";
-    const appCertificate = "abc7fdb9e6b94a78a1e4a36000c3631a";
+    const appID = "b87ad04386734ecf8322d949023bb32a";
+    const appID1 = "2ebd5aad591a42bc85aaae36dc754618";
+    const appCertificate = "87d421f4b2754616a37b5e14cbbd2c0b";
+    const appCertificate1 = "abc7fdb9e6b94a78a1e4a36000c3631a";
     const expirationTimeInSeconds = 3600;
     const uid = Math.floor(Math.random() * 100000);
     const role = req.body.isPublisher ? Agora.RtcRole.PUBLISHER : Agora.RtcRole.SUBSCRIBER;
