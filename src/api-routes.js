@@ -30,7 +30,7 @@ router.post('/generateToken',nocache, function (req, res) {
     const appCertificate = "87d421f4b2754616a37b5e14cbbd2c0b";
     const appCertificate1 = "abc7fdb9e6b94a78a1e4a36000c3631a";
     const expirationTimeInSeconds = 3600;
-    const uid = req.body.channel;
+    const uid = 0;
     const role = req.body.isPublisher ? Agora.RtcRole.PUBLISHER : Agora.RtcRole.SUBSCRIBER;
     const channel = req.body.channel;
     const currentTimestamp = Math.floor(Date.now() / 1000);
