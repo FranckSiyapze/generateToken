@@ -2,6 +2,10 @@
 // Initialize express router
 let router = require('express').Router();
 let Agora = require("agora-access-token");
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
+
 // Set default API response
 router.get('/', function (req, res) {
     res.json({
@@ -21,6 +25,25 @@ router.get('/test', function (req, res) {
         status: 'API Test Its Working',
         message: 'Welcome !'
     });
+});
+
+router.post('/sendWhatMessage',nocache, function (req, res) {
+    const { body } = req.body;
+    if (!body) {
+        return res.status(400).json({status: 400, message: 'Missing required parameters' });
+    }
+    client.messages
+      .create({
+         from: 'whatsapp:+14155238886',
+         body: body,
+         to: 'whatsapp:+13435581078'
+       })
+      .then(message => res.json({
+        status: message.status,
+        message: 'Send'
+    })
+);
+      
 });
 router.post('/generateToken',nocache, function (req, res) {
     ///console.log(req.body);
