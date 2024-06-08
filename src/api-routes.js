@@ -2,9 +2,10 @@
 // Initialize express router
 let router = require('express').Router();
 let Agora = require("agora-access-token");
+const twilio = require('twilio');
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = require('twilio')(accountSid, authToken);
+const client = twilio(accountSid, authToken);
 
 // Set default API response
 router.get('/', function (req, res) {
