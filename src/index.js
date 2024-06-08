@@ -1,7 +1,10 @@
 // Import express
 let express = require('express');
-const dotenv = require('dotenv');
-dotenv.config();
+let dotenv = require('dotenv');
+// Load environment variables from .env file in development
+if (process.env.NODE_ENV !== 'production') {
+     dotenv.config();
+}
 // Initialize the app
 let app = express();
 app.use(express.json());
