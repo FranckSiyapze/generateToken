@@ -1,5 +1,7 @@
 // Import express
-let express = require('express')
+let express = require('express');
+const dotenv = require('dotenv');
+dotenv.config();
 // Initialize the app
 let app = express();
 app.use(express.json());
